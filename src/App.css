@@ -1,38 +1,88 @@
-.App {
-  text-align: center;
+/* App.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Varela+Round&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@500;600&display=swap');
+
+
+.custom-card {
+  background-color: #f7f8fc;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 100%;
+  width: 100%; /* This is fine — keeps card within Col */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.chart-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 300px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+/* Set Quicksand as default site-wide */
+body {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #f2eeff;
 }
 
-.App-link {
-  color: #61dafb;
+/* Card Titles (Graph Titles) */
+.graph-title {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.65rem;
+  font-weight: 1000;
+  color: #333;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dashboard-title {
+  font-family: 'Varela Round', sans-serif;
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: #1c1c37;
+  text-align: left;
+}
+
+.dashboard-description {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 1rem;
+  color: #222222;
+  text-align: left;
+  margin-top: 0.25rem;
+}
+
+.dataset-source {
+  font-family: 'Quicksand', sans-serif !important;
+  font-size: 1.1rem !important;
+  color: #222222 !important;
+}
+
+.dataset-source a {
+  color: #007bff;
+  text-decoration: underline;
+}
+
+.about-text {
+  color: #7a3737;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  user-select: none;
+
+}
+.about-text:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Make tooltip text use Quicksand font */
+.tooltip-inner {
+  font-family: 'Quicksand', sans-serif !important;
+  font-size: 0.85rem;
 }
