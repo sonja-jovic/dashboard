@@ -27,41 +27,6 @@ export const months_fr = [
   'Avr. 2025', 'Mai 2025'
 ];
 
-// Prices structure: itemPrices[language][item][province][month] = price (number)
-// export const itemPrices = {
-//   en: {
-//     Deodorant: {
-//       Canada:      { 'Jan 2025': 3.10, 'Feb 2025': 3.12, 'Mar 2025': 3.15, 'Apr 2025': 3.18, 'May 2025': 3.20 },
-//       Alberta:     { 'Jan 2025': 3.05, 'Feb 2025': 3.07, 'Mar 2025': 3.10, 'Apr 2025': 3.13, 'May 2025': 3.15 },
-
-//     },
-//     Toothpaste: {
-//       Canada:      { 'Jan 2025': 2.85, 'Feb 2025': 2.87, 'Mar 2025': 2.90, 'Apr 2025': 2.92, 'May 2025': 2.95 },
-//       Alberta:     { 'Jan 2025': 2.80, 'Feb 2025': 2.82, 'Mar 2025': 2.85, 'Apr 2025': 2.87, 'May 2025': 2.90 },
-//     },
-    
-//   },
-//   fr: {
-//     Déodorant: {
-//       Canada:      { 'Janv. 2025': 3.10, 'Févr. 2025': 3.12, 'Mars 2025': 3.15, 'Avr. 2025': 3.18, 'Mai 2025': 3.20 },
-//       Alberta:     { 'Janv. 2025': 3.05, 'Févr. 2025': 3.07, 'Mars 2025': 3.10, 'Avr. 2025': 3.13, 'Mai 2025': 3.15 },
-//       'Colombie-Britannique': { 'Janv. 2025': 3.20, 'Févr. 2025': 3.22, 'Mars 2025': 3.25, 'Avr. 2025': 3.28, 'Mai 2025': 3.30 },
-//       Manitoba:    { 'Janv. 2025': 3.00, 'Févr. 2025': 3.02, 'Mars 2025': 3.05, 'Avr. 2025': 3.08, 'Mai 2025': 3.10 },
-//       'Nouveau-Brunswick': { 'Janv. 2025': 3.15, 'Févr. 2025': 3.17, 'Mars 2025': 3.20, 'Avr. 2025': 3.23, 'Mai 2025': 3.25 },
-//       'Terre-Neuve-et-Labrador': { 'Janv. 2025': 3.18, 'Févr. 2025': 3.20, 'Mars 2025': 3.23, 'Avr. 2025': 3.26, 'Mai 2025': 3.28 },
-//       'Territoires du Nord-Ouest': { 'Janv. 2025': 3.25, 'Févr. 2025': 3.27, 'Mars 2025': 3.30, 'Avr. 2025': 3.33, 'Mai 2025': 3.35 },
-//       'Nouvelle-Écosse': { 'Janv. 2025': 3.12, 'Févr. 2025': 3.14, 'Mars 2025': 3.17, 'Avr. 2025': 3.20, 'Mai 2025': 3.22 },
-//       Nunavut:     { 'Janv. 2025': 3.30, 'Févr. 2025': 3.32, 'Mars 2025': 3.35, 'Avr. 2025': 3.38, 'Mai 2025': 3.40 },
-//       Ontario:     { 'Janv. 2025': 3.08, 'Févr. 2025': 3.10, 'Mars 2025': 3.13, 'Avr. 2025': 3.16, 'Mai 2025': 3.18 },
-//       'Île-du-Prince-Édouard': { 'Janv. 2025': 3.14, 'Févr. 2025': 3.16, 'Mars 2025': 3.19, 'Avr. 2025': 3.22, 'Mai 2025': 3.24 },
-//       Québec:      { 'Janv. 2025': 3.11, 'Févr. 2025': 3.13, 'Mars 2025': 3.16, 'Avr. 2025': 3.19, 'Mai 2025': 3.21 },
-//       Saskatchewan:{ 'Janv. 2025': 3.09, 'Févr. 2025': 3.11, 'Mars 2025': 3.14, 'Avr. 2025': 3.17, 'Mai 2025': 3.19 },
-//       Yukon:       { 'Janv. 2025': 3.28, 'Févr. 2025': 3.30, 'Mars 2025': 3.33, 'Avr. 2025': 3.36, 'Mai 2025': 3.38 },
-//     },
-
-//   }
-// };
-
 export const itemPrices = {
   en: {
     Deodorant: {

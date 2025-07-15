@@ -35,16 +35,15 @@ ChartJS.register(
 );
 
 function App() {
-  const [isFrench1, setIsFrench1] = useState(false);
-  const [isFrench2, setIsFrench2] = useState(false);
+  const [isFrench, setIsFrench] = useState(false);
 
-  const items1 = isFrench1 ? items_fr : items_en;
-  const provinces1 = isFrench1 ? provincesAndTerritories_fr : provincesAndTerritories_en;
-  const months1 = isFrench1 ? months_fr : months_en;
+  const items1 = isFrench ? items_fr : items_en;
+  const provinces1 = isFrench ? provincesAndTerritories_fr : provincesAndTerritories_en;
+  const months1 = isFrench ? months_fr : months_en;
 
-  const items2 = isFrench2 ? items_fr : items_en;
-  const provinces2 = isFrench2 ? provincesAndTerritories_fr : provincesAndTerritories_en;
-  const months2 = isFrench2 ? months_fr : months_en;
+  const items2 = isFrench ? items_fr : items_en;
+  const provinces2 = isFrench ? provincesAndTerritories_fr : provincesAndTerritories_en;
+  const months2 = isFrench ? months_fr : months_en;
 
   const [selectedItem, setSelectedItem] = useState(items1[0]);
   const [selectedProvince, setSelectedProvince] = useState(provinces1[0]);
@@ -53,50 +52,50 @@ function App() {
   const [selectedProvince2, setSelectedProvince2] = useState(provinces2[0]);
 
   React.useEffect(() => {
-    const currentIndex = isFrench1 ? items_en.indexOf(selectedItem) : items_fr.indexOf(selectedItem);
+    const currentIndex = isFrench ? items_en.indexOf(selectedItem) : items_fr.indexOf(selectedItem);
     if (currentIndex >= 0) {
-      setSelectedItem(isFrench1 ? items_fr[currentIndex] : items_en[currentIndex]);
+      setSelectedItem(isFrench ? items_fr[currentIndex] : items_en[currentIndex]);
     } else {
       setSelectedItem(items1[0]);
     }
 
-    const currentProvinceIndex = isFrench1
+    const currentProvinceIndex = isFrench
       ? provincesAndTerritories_en.indexOf(selectedProvince)
       : provincesAndTerritories_fr.indexOf(selectedProvince);
     if (currentProvinceIndex >= 0) {
-      setSelectedProvince(isFrench1 ? provincesAndTerritories_fr[currentProvinceIndex] : provincesAndTerritories_en[currentProvinceIndex]);
+      setSelectedProvince(isFrench ? provincesAndTerritories_fr[currentProvinceIndex] : provincesAndTerritories_en[currentProvinceIndex]);
     } else {
       setSelectedProvince(provinces1[0]);
     }
-  }, [isFrench1]);
+  }, [isFrench]);
 
   React.useEffect(() => {
-    const currentMonthIndex = isFrench2
+    const currentMonthIndex = isFrench
       ? months_en.indexOf(selectedMonth)
       : months_fr.indexOf(selectedMonth);
     if (currentMonthIndex >= 0) {
-      setSelectedMonth(isFrench2 ? months_fr[currentMonthIndex] : months_en[currentMonthIndex]);
+      setSelectedMonth(isFrench ? months_fr[currentMonthIndex] : months_en[currentMonthIndex]);
     } else {
       setSelectedMonth(months2[0]);
     }
 
-    const currentProvinceIndex = isFrench2
+    const currentProvinceIndex = isFrench
       ? provincesAndTerritories_en.indexOf(selectedProvince2)
       : provincesAndTerritories_fr.indexOf(selectedProvince2);
     if (currentProvinceIndex >= 0) {
-      setSelectedProvince2(isFrench2 ? provincesAndTerritories_fr[currentProvinceIndex] : provincesAndTerritories_en[currentProvinceIndex]);
+      setSelectedProvince2(isFrench ? provincesAndTerritories_fr[currentProvinceIndex] : provincesAndTerritories_en[currentProvinceIndex]);
     } else {
       setSelectedProvince2(provinces2[0]);
     }
-  }, [isFrench2]);
+  }, [isFrench]);
 
-  const priceFormatter1 = new Intl.NumberFormat(isFrench1 ? 'fr-CA' : 'en-CA', {
+  const priceFormatter1 = new Intl.NumberFormat(isFrench ? 'fr-CA' : 'en-CA', {
     style: 'currency',
     currency: 'CAD',
     minimumFractionDigits: 2,
   });
 
-  const priceFormatter2 = new Intl.NumberFormat(isFrench2 ? 'fr-CA' : 'en-CA', {
+  const priceFormatter2 = new Intl.NumberFormat(isFrench ? 'fr-CA' : 'en-CA', {
     style: 'currency',
     currency: 'CAD',
     minimumFractionDigits: 2,
@@ -108,7 +107,7 @@ function App() {
       {
         label: `${selectedItem} - ${selectedProvince}`,
         data: months1.map(month => {
-          const langKey = isFrench1 ? 'fr' : 'en';
+          const langKey = isFrench ? 'fr' : 'en';
           const price = itemPrices[langKey][selectedItem]?.[selectedProvince]?.[month];
           return price ?? 0;
         }),
@@ -124,9 +123,9 @@ function App() {
     labels: items2,
     datasets: [
       {
-        label: `${isFrench2 ? 'Prix' : 'Price'} - ${selectedProvince2} - ${selectedMonth}`,
+        label: `${isFrench ? 'Prix' : 'Price'} - ${selectedProvince2} - ${selectedMonth}`,
         data: items2.map(item => {
-          const langKey = isFrench2 ? 'fr' : 'en';
+          const langKey = isFrench ? 'fr' : 'en';
           const price = itemPrices[langKey][item]?.[selectedProvince2]?.[selectedMonth];
           return price ?? 0;
         }),
@@ -193,15 +192,31 @@ function App() {
 
   return (
     <Container fluid className="px-3 py-4">
-      <div className="mb-4 px-3">
-        <h2 className="dashboard-title">
-          Household Item Price Trends in Canada
+
+    <div className="d-flex justify-content-between align-items-start mb-4 px-3">
+
+      <div>
+        <h2 className="dashboard-title mb-1">
+          {isFrench
+            ? 'Tendances des prix des produits ménagers au Canada'
+            : 'Household Item Price Trends in Canada'}
         </h2>
-        <p className="dashboard-description">
-          Explore average retail prices of common household items across Canada from January to May 2025.
+        <p className="dashboard-description mb-0">
+          {isFrench
+            ? 'Explorez les prix de détail moyens des produits ménagers courants à travers le Canada de janvier à mai 2025.'
+            : 'Explore average retail prices of common household items across Canada from January to May 2025.'}
         </p>
       </div>
 
+      <span
+        role="button"
+        tabIndex={0}
+        className="language-toggle"
+        onClick={() => setIsFrench(!isFrench)}
+      >
+        {isFrench ? 'English' : 'Français'}
+      </span>
+    </div>
       <Row className="g-3">
         {/* LEFT CARD */}
         <Col xs={12} md={6}>
@@ -209,7 +224,7 @@ function App() {
             <Card.Body>
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <Card.Title className="graph-title mb-0">
-                  {isFrench1 ? 'Tendances des prix au fil du temps' : 'Price Trends Over Time'}
+                  {isFrench ? 'Tendances des prix au fil du temps' : 'Price Trends Over Time'}
                 </Card.Title>
 
                 <div className="d-flex align-items-center gap-3">
@@ -217,7 +232,7 @@ function App() {
                     placement="left"
                     overlay={
                       <Tooltip id="tooltip-chart1">
-                        {isFrench1
+                        {isFrench
                           ? "Voir le prix d'un article au fil du temps dans une province sélectionnée."
                           : 'View the price of an item over time in a selected province.'}
                       </Tooltip>
@@ -229,20 +244,10 @@ function App() {
                       className="about-text"
                       aria-label="About Price Trends Over Time"
                     >
-                      {isFrench1 ? 'À propos' : 'About'}
+                      {isFrench ? 'À propos' : 'About'}
                     </span>
                   </OverlayTrigger>
 
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="about-text"
-                    onClick={() => setIsFrench1(!isFrench1)}
-                    aria-label="Toggle language for Price Trends Over Time"
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {isFrench1 ? 'English' : 'Français'}
-                  </span>
                 </div>
               </div>
 
@@ -253,8 +258,8 @@ function App() {
                   onChange={e => setSelectedItem(e.target.value)}
                 >
                   {items_en.map((itemKey, i) => (
-                    <option key={itemKey} value={isFrench1 ? items_fr[i] : itemKey}>
-                      {isFrench1 ? items_fr[i] : itemKey}
+                    <option key={itemKey} value={isFrench ? items_fr[i] : itemKey}>
+                      {isFrench ? items_fr[i] : itemKey}
                     </option>
                   ))}
                 </Form.Select>
@@ -264,8 +269,8 @@ function App() {
                   onChange={e => setSelectedProvince(e.target.value)}
                 >
                   {provincesAndTerritories_en.map((provKey, i) => (
-                    <option key={provKey} value={isFrench1 ? provincesAndTerritories_fr[i] : provKey}>
-                      {isFrench1 ? provincesAndTerritories_fr[i] : provKey}
+                    <option key={provKey} value={isFrench ? provincesAndTerritories_fr[i] : provKey}>
+                      {isFrench ? provincesAndTerritories_fr[i] : provKey}
                     </option>
                   ))}
                 </Form.Select>
@@ -284,7 +289,7 @@ function App() {
             <Card.Body>
               <div className="d-flex justify-content-between align-items-center mb-2">
                 <Card.Title className="graph-title mb-0">
-                  {isFrench2 ? 'Comparaison des prix par produit' : 'Price Comparison by Product'}
+                  {isFrench ? 'Comparaison des prix par produit' : 'Price Comparison by Product'}
                 </Card.Title>
 
                 <div className="d-flex align-items-center gap-3">
@@ -292,7 +297,7 @@ function App() {
                     placement="left"
                     overlay={
                       <Tooltip id="tooltip-chart2">
-                        {isFrench2
+                        {isFrench
                           ? 'Comparer les prix des articles dans une province et un mois sélectionnés.'
                           : 'Compare item prices in a selected province and month.'}
                       </Tooltip>
@@ -304,20 +309,9 @@ function App() {
                       className="about-text"
                       aria-label="About Price Comparison by Product"
                     >
-                      {isFrench2 ? 'À propos' : 'About'}
+                      {isFrench ? 'À propos' : 'About'}
                     </span>
                   </OverlayTrigger>
-
-                  <span
-                    role="button"
-                    tabIndex={0}
-                    className="about-text"
-                    onClick={() => setIsFrench2(!isFrench2)}
-                    aria-label="Toggle language for Price Comparison by Product"
-                    style={{ cursor: 'pointer' }}
-                  >
-                    {isFrench2 ? 'English' : 'Français'}
-                  </span>
                 </div>
               </div>
 
@@ -328,8 +322,8 @@ function App() {
                   onChange={e => setSelectedMonth(e.target.value)}
                 >
                   {months_en.map((monthKey, i) => (
-                    <option key={monthKey} value={isFrench2 ? months_fr[i] : monthKey}>
-                      {isFrench2 ? months_fr[i] : monthKey}
+                    <option key={monthKey} value={isFrench ? months_fr[i] : monthKey}>
+                      {isFrench ? months_fr[i] : monthKey}
                     </option>
                   ))}
                 </Form.Select>
@@ -339,8 +333,8 @@ function App() {
                   onChange={e => setSelectedProvince2(e.target.value)}
                 >
                   {provincesAndTerritories_en.map((provKey, i) => (
-                    <option key={provKey} value={isFrench2 ? provincesAndTerritories_fr[i] : provKey}>
-                      {isFrench2 ? provincesAndTerritories_fr[i] : provKey}
+                    <option key={provKey} value={isFrench ? provincesAndTerritories_fr[i] : provKey}>
+                      {isFrench ? provincesAndTerritories_fr[i] : provKey}
                     </option>
                   ))}
                 </Form.Select>
@@ -355,18 +349,22 @@ function App() {
       </Row>
 
       <div className="mt-4 px-3 dataset-source">
-        <small>
-          Data source:&nbsp;
-          <a
-            href="https://open.canada.ca/data/en/dataset/8015bcc6-401d-4927-a447-bb35d5dfcc91"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Government of Canada Open Data Portal
-          </a>
-        </small>
+      <small>
+        {isFrench ? 'Source des données' : 'Data source'}:&nbsp;
+        <a
+          href="https://open.canada.ca/data/en/dataset/8015bcc6-401d-4927-a447-bb35d5dfcc91"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          {isFrench
+            ? 'Portail des données ouvertes du gouvernement du Canada'
+            : 'Government of Canada Open Data Portal'}
+        </a>
+      </small>
+
       </div>
     </Container>
+    
   );
 }
 
