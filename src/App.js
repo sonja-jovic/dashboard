@@ -1,5 +1,5 @@
 // App.js
-
+import './App.css';
 import React, { useState } from 'react';
 import { Card, Container, Row, Col, Form, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { Line, Bar } from 'react-chartjs-2';
@@ -21,8 +21,6 @@ import {
   months_en, months_fr,
   itemPrices
 } from './itemPrices';
-
-import './App.css';
 
 ChartJS.register(
   LineElement,
@@ -151,11 +149,11 @@ function App() {
     },
     scales: {
       x: {
-        ticks: { font: { family: 'Quicksand', size: 12 }, color: '#333' },
+        ticks: { font: { family: 'Quicksand', size: 12, weight: 420 }, color: '#333' },
       },
       y: {
         ticks: {
-          font: { family: 'Quicksand', size: 12 }, color: '#333',
+          font: { family: 'Quicksand', size: 12, weight: 420 }, color: '#333',
           callback: val => priceFormatter1.format(val),
         }
       }
@@ -178,12 +176,12 @@ function App() {
     scales: {
       x: {
         grid: { display: false },
-        ticks: { font: { family: 'Quicksand', size: 12 }, color: '#333' },
+        ticks: { font: { family: 'Quicksand', size: 12, weight: 420 }, color: '#333' },
       },
       y: {
         grid: { display: true },
         ticks: {
-          font: { family: 'Quicksand', size: 12 }, color: '#333',
+          font: { family: 'Quicksand', size: 12, weight: 420 }, color: '#333',
           callback: val => priceFormatter2.format(val),
         }
       }
@@ -254,6 +252,7 @@ function App() {
               <div className="d-flex gap-2 mb-3" style={{ maxWidth: '400px' }}>
                 <Form.Select
                   size="sm"
+                  className="custom-select"
                   value={selectedItem}
                   onChange={e => setSelectedItem(e.target.value)}
                 >
@@ -265,6 +264,7 @@ function App() {
                 </Form.Select>
                 <Form.Select
                   size="sm"
+                  className="custom-select"
                   value={selectedProvince}
                   onChange={e => setSelectedProvince(e.target.value)}
                 >
@@ -318,6 +318,7 @@ function App() {
               <div className="d-flex gap-2 mb-3" style={{ maxWidth: '400px' }}>
                 <Form.Select
                   size="sm"
+                  className="custom-select"
                   value={selectedMonth}
                   onChange={e => setSelectedMonth(e.target.value)}
                 >
@@ -329,6 +330,7 @@ function App() {
                 </Form.Select>
                 <Form.Select
                   size="sm"
+                  className="custom-select"
                   value={selectedProvince2}
                   onChange={e => setSelectedProvince2(e.target.value)}
                 >

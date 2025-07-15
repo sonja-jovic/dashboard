@@ -35,15 +35,15 @@ body {
 /* Card Titles (Graph Titles) */
 .graph-title {
   font-family: 'Raleway', sans-serif;
-  font-size: 1.65rem;
-  font-weight: 1000;
-  color: #333;
+  font-size: 1.68rem;
+  font-weight: bolder;
+  color: #222121;
 }
 
 .dashboard-title {
   font-family: 'Varela Round', sans-serif;
-  font-size: 2.3rem;
-  font-weight: bold;
+  font-size: 2.4rem;
+  font-weight: bolder;
   margin-bottom: 0.5rem;
   color: #1c1c37;
   text-align: left;
@@ -52,15 +52,17 @@ body {
 .dashboard-description {
   font-family: 'Quicksand', sans-serif;
   font-size: 1rem;
-  color: #222222;
+  color: #3d3c3c;
   text-align: left;
   margin-top: 0.25rem;
+  font-weight: 450 !important;
 }
 
 .dataset-source {
   font-family: 'Quicksand', sans-serif !important;
   font-size: 1.1rem !important;
   color: #222222 !important;
+  font-weight: 350;
 }
 
 .dataset-source a {
@@ -72,8 +74,9 @@ body {
   color: #7a3737;
   text-decoration: underline;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   user-select: none;
+  font-weight: 700;
 
 }
 .about-text:focus {
@@ -98,4 +101,11 @@ body {
 
 .language-toggle:hover {
   color: #000000; /* darker on hover */
+}
+
+/* Style all dropdown selects */
+.custom-select {
+  font-family: 'Quicksand', sans-serif;
+  font-weight: 403;
+  
 }
